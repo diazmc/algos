@@ -48,6 +48,31 @@ class LinkedList {
     node.next = this.head;
     this.head = node;
   }
+
+  getByIndex(index) {
+    if(index < 0 || index >= this.size()) {
+      return null;
+    }
+
+    let current = this.head;
+
+    for(let i = 0; i < index; i++) {
+      current = current.next;
+    }
+
+    return current;
+  }
+
+  print() {
+    let output = '';
+    let current = this.head;
+
+    while(current) {
+      output = `${output}${current.data} -> `;
+      current = current.next;
+    }
+    return `${output}null`;
+  }
 }
 
 let node1 = new LinkedListNode(2);
@@ -59,6 +84,6 @@ node1.next = node2;
 node2.next = node3;
 
 let list = new LinkedList(node1);
-list.insertAtHead(node4);
+list.insertNode(node4);
 
-console.log(list);
+console.log(list.print())
