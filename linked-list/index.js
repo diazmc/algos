@@ -73,6 +73,15 @@ class LinkedList {
     }
     return `${output}null`;
   }
+
+  insertAtIndex(index, value) {
+    if (index === 0) return this.insertNode(value);
+
+    const prev = this.getByIndex(index - 1);
+    let newNode = new LinkedListNode(value)
+    newNode.next = prev.next;
+    prev.next = newNode;
+  }
 }
 
 let node1 = new LinkedListNode(2);
@@ -85,5 +94,7 @@ node2.next = node3;
 
 let list = new LinkedList(node1);
 list.insertNode(node4);
+console.log(list.print())
+list.insertAtIndex(2, 3)
 
 console.log(list.print())
