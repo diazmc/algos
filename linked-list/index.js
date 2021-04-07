@@ -82,6 +82,19 @@ class LinkedList {
     newNode.next = prev.next;
     prev.next = newNode;
   }
+
+  removeHead() {
+    this.head = this.head.next;
+  }
+
+  removeAtIndex(index) {
+    if(index === 0) return this.removeHead();
+
+    const prev = this.getByIndex(index - 1);
+    if(prev === null) return null;
+
+    prev.next = prev.next.next;
+  }
 }
 
 let node1 = new LinkedListNode(2);
@@ -96,5 +109,6 @@ let list = new LinkedList(node1);
 list.insertNode(node4);
 console.log(list.print())
 list.insertAtIndex(2, 3)
-
+console.log(list.print())
+list.removeHead();
 console.log(list.print())
