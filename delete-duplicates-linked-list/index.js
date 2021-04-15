@@ -2,7 +2,7 @@
 //delete all duplicates such that each element appears only once. Return the linked list sorted as well.
 
 function deleteDuplicates(head) {
-  if(head == null) retur null;
+  if(head == null) return null;
 
   let current = head;
 
