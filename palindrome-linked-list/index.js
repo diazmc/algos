@@ -11,7 +11,7 @@ function isPalindrome(head) {
         current = current.next;
     }
     
-    let middle = Math.floor(palindrome.length);
+    let middle = Math.floor(palindrome.length/2);
     
     for(let i = 0; i < middle; i++) {
         if(palindrome[i] != palindrome[palindrome.length - 1 - i]) {
