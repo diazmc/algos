@@ -18,14 +18,52 @@ class BST {
             this.right = new BST(node);
         }
     }
+
+    pre_order() {
+        console.log(this.val);
+
+        if(this.left) {
+            this.left.pre_order();
+        }
+
+        if(this.right) {
+            this.right.pre_order();
+        }
+    }
+
+    in_order() {
+        if(this.left) {
+            this.left.in_order();
+        }
+
+        console.log(this.val);
+
+        if(this.right) {
+            this.right.in_order();
+        }
+    }
+
+    post_order() {
+        if(this.left) {
+            this.left.post_order();
+        }
+
+        if(this.right) {
+            this.right.post_order();
+        }
+
+        console.log(this.val);
+    }
 }
 
 
-let root = new BST(5);
+let root = new BST(6);
 root.insert_node(10);
 root.insert_node(3);
 root.insert_node(2);
+root.insert_node(4);
 root.insert_node(15);
+root.insert_node(9);
 
-console.log(root);
+root.post_order();
 
