@@ -19,6 +19,17 @@ class BST {
         }
     }
 
+    find_node(node) {
+        if(node < this.val && this.left) {
+            return this.leftfind_node(node);
+        }
+        if(node > this.val && this.right) {
+            return this.right.find_node(node)
+        }
+
+        return node == this.val;
+    }
+
     pre_order() {
         console.log(this.val);
 
@@ -54,16 +65,47 @@ class BST {
 
         console.log(this.val);
     }
+
+
 }
+
+function bfs(node) {
+    let queue = [];
+    queue.push(node);
+
+    while(queue.length !== 0) {
+        current = queue.shift();
+        console.log(current.val)
+
+        if(current.left) {
+            queue.push(current.left)
+        }
+
+        if(current.right) {
+            queue.push(current.right)
+        }
+    }
+}
+
+function find_min_val(node) {
+    if(node.left) {
+        return find_min_val(node.left);
+    }
+    else {
+        return node.val;
+    }
+}
+
 
 
 let root = new BST(6);
 root.insert_node(10);
 root.insert_node(3);
 root.insert_node(2);
+root.insert_node(1);
 root.insert_node(4);
 root.insert_node(15);
 root.insert_node(9);
 
-root.post_order();
 
+console.log(find_min_val(root));
