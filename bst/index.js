@@ -21,7 +21,7 @@ class BST {
 
     find_node(node) {
         if(node < this.val && this.left) {
-            return this.leftfind_node(node);
+            return this.left.find_node(node);
         }
         if(node > this.val && this.right) {
             return this.right.find_node(node)
@@ -31,15 +31,34 @@ class BST {
     }
 
     pre_order() {
-        console.log(this.val);
+        // console.log(this.val);
 
-        if(this.left) {
-            this.left.pre_order();
+        // if(this.left) {
+        //     this.left.pre_order();
+        // }
+
+        // if(this.right) {
+        //     this.right.pre_order();
+        // }
+        let output = [];
+        let stack = [];
+
+        if(this !== null) {
+            stack.push(this);
+        }
+        let cur;
+        while(stack.length !== 0) {
+            cur = stack.pop();
+            output.push(cur.val);
+            if(cur.right) {
+                stack.push(cur.right);
+            }
+            if(cur.left) {
+                stack.push(cur.left);
+            }
         }
 
-        if(this.right) {
-            this.right.pre_order();
-        }
+        console.log(output);
     }
 
     in_order() {
@@ -107,5 +126,4 @@ root.insert_node(4);
 root.insert_node(15);
 root.insert_node(9);
 
-
-console.log(find_min_val(root));
+root.pre_order();
